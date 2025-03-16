@@ -1,0 +1,65 @@
+version: '3'
+
+services:
+  code-server-1:
+    build: .
+    container_name: code-server-1
+    ports:
+      - "8080:8080"
+      - "3000:3000"
+    environment:
+      - PASSWORD=your_password_1
+    volumes:
+      - ./project1:/home/coder/project
+      - ./config1:/home/coder/.config
+      - code-server-extensions:/home/coder/.local/share/code-server/extensions
+    restart: unless-stopped
+    command: --auth password --user-data-dir /home/coder/.local/share/code-server /home/coder/project
+
+  code-server-2:
+    build: .
+    container_name: code-server-2
+    ports:
+      - "8081:8080"
+      - "3001:3000"
+    environment:
+      - PASSWORD=your_password_2
+    volumes:
+      - ./project2:/home/coder/project
+      - ./config2:/home/coder/.config
+      - code-server-extensions:/home/coder/.local/share/code-server/extensions
+    restart: unless-stopped
+    command: --auth password --user-data-dir /home/coder/.local/share/code-server /home/coder/project
+
+  code-server-3:
+    build: .
+    container_name: code-server-3
+    ports:
+      - "8082:8080"
+      - "3002:3000"
+    environment:
+      - PASSWORD=your_password_3
+    volumes:
+      - ./project3:/home/coder/project
+      - ./config3:/home/coder/.config
+      - code-server-extensions:/home/coder/.local/share/code-server/extensions
+    restart: unless-stopped
+    command: --auth password --user-data-dir /home/coder/.local/share/code-server /home/coder/project
+
+  code-server-4:
+    build: .
+    container_name: code-server-4
+    ports:
+      - "8083:8080"
+      - "3003:3000"
+    environment:
+      - PASSWORD=your_password_4
+    volumes:
+      - ./project4:/home/coder/project
+      - ./config4:/home/coder/.config
+      - code-server-extensions:/home/coder/.local/share/code-server/extensions
+    restart: unless-stopped
+    command: --auth password --user-data-dir /home/coder/.local/share/code-server /home/coder/project
+
+volumes:
+  code-server-extensions:
